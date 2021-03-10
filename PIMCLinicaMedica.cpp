@@ -32,6 +32,6 @@ int main (){
     printf("deseja continuar?\nAperte qualquer numero positivo\nFinalizar programa 0: ");
     scanf("%d",&d);
    }while(d !=0);
-
+   //teste
 return 0;
 }
