@@ -64,7 +64,7 @@ int main(){
 
     int cont= 0, result=0, opcao, codigo, tam=0,achou=0,cadastro_feito=0,unidade[3],pos,neg,tama,unidademed1=0,unidademed2=0,unidademed3=0,medUni=0,funcuni1=0,funcuni2=0,funcuni3=0,UniFunc,UniPac,achou2=0,unipac1=0,unipac2=0,unipac3=0,total,total2,total3,maiorPac,maiorFunc,maiorMed,valor1=0,valor2=0,valor3=0;
     paciente cadastro[tam];
-    char nome[30], cpf[10], nome_med[30],cpf_med[10],cpf_func[10],nome_func[30],expc[1],func[20];
+    char nome[30], cpf[10], nome_med[30],cpf_med[10],cpf_func[10],nome_func[30],expc,func[20];
 
     login(&result);
     printf("%s",nome_func);
@@ -87,74 +87,7 @@ int main(){
 		switch (opcao){
 
             case 1:
-                fflush(stdin);
-                printf("20 reais o cadastro!\n");
-                fflush(stdin);
-
-                //gerando arquivo em txt
-                FILE *pont_arq;
-
-                //abrindo o arquivo 
-                pont_arq=fopen("Cadastro de pacientes.txt","a");
-
-                //testando se o arquivo foi realmente criado
-                if(pont_arq == NULL)
-                {
-                printf("Erro na abertura do arquivo!");
-                return 1;
-                } 
-                else
-                {
-                    printf("Cadastro de pacientes: \n");
-                    
-                        printf("\nInforme o CPF do paciente: ");
-                        setbuf(stdin,0);
-                        fgets(cpf,10,stdin);
-                        printf("%s",cpf);
-
-                        system("pause");
-
-                        printf("\nInforme o nome do paciente: ");
-                        setbuf(stdin,0);
-                        fgets(nome,30,stdin);
-                        printf("%s",nome);
-
-                        system("pause");
-
-                        printf("Informe a unidade do paciente 1,2 ou 3: \n");
-                        scanf("%d",&UniPac);
-
-                        switch (UniPac){
-                            case 1: unipac1=unipac1 + 1;
-                                valor1=valor1+1;
-                                system("pause");
-                                system("cls");
-                                break;
-                            case 2: unipac2=unipac2 +1;
-                                valor2=valor2+1;
-                                system("pause");
-                                system("cls");
-                                break;
-                            case 3: unipac3=unipac3 +1;
-                                valor3=valor3+1;
-
-                                system("pause");
-                                system("cls");
-                                break;
-                            default: printf("\nEssa opção não existe. Escolha uma opção válida! \n");    
-                        }
-                        //usando fprintf para armazenar a string no arquivo
-                        fprintf(pont_arq, "%s", nome);
-                        fprintf(pont_arq, "%s", cpf);
-                        fprintf(pont_arq, "/==========/");
-
-                        //fechando arquivo
-                        fclose(pont_arq);
-                        printf("Dados gravados com sucesso!");
-                    
-                }
-            cadastro_feito++;
-            printf("\nCadastro realizado com sucesso! \n");
+                
             system("pause");
             system("cls");
             break;
@@ -171,80 +104,87 @@ int main(){
             
 
             case 3: 
-                fflush(stdin);
-                printf("Cadastro de médicos: \n");
-
-                //gerando arquivo em txt
-                FILE *pont_arqM;
-
-                //abrindo o arquivo 
-                pont_arqM = fopen("Cadastro de medicos.txt","a");
-
-                //testando se o arquivo foi realmente criado
-                if(pont_arqM == NULL)
-                {
-                printf("Erro na abertura do arquivo!");
-                return 1;
-                }
-                else
-                {
-                    printf("\nInforme o CPF do médico: ");
-                    setbuf(stdin,0);
-                    fgets(cpf_med, 10,stdin);
-                    system("pause");
-
-                    printf("Informe o nome do médico: ");
-                    setbuf(stdin,0);
-                    fgets(nome_med, 30,stdin);
-                    system("pause");
-
-                    printf("\nInforme a especialidade do médico: ");
-                    setbuf(stdin,0);
-                    fgets(func, 20,stdin);
-                    system("pause");
-
-                    printf("\nInforme a unidade do médico 1,2 ou 3: ");
-                    scanf("%d",&medUni);
-
-                    switch (medUni){
-                        case 1: 
-                            unidademed1 = unidademed1 + 1;
-                        break;
-                        case 2: 
-                            unidademed2 = unidademed2 +1;
-                        break;
-                        case 3: 
-                            unidademed3 = unidademed3 +1;
-                        break;
-
-                        default: 
-                            printf("\nEssa opção não existe. Escolha uma opção válida! \n");
-                    }
-                        //usando fprintf para armazenar a string no arquivo
-                        fprintf(pont_arqM, "\n");
-                        fprintf(pont_arqM, "%s", nome_med);
-                        fprintf(pont_arqM, "%s", cpf_med);
-                        fprintf(pont_arqM, "%s", func);
-                        fprintf(pont_arqM, "/==========/");
-
-                        //fechando arquivo
-                        fclose(pont_arqM);
-                        printf("Dados gravados com sucesso!");
-                }
-
-            printf("Cadastro realizado com sucesso!\n");
+                
             system("pause");
             system("cls");
             break;
 
             case 4: 
-                    fflush(stdin);
-    
+               
+            printf("Cadastro realizado com sucesso! \n");
             system("pause");
             system("cls");
             break;
 
             case 5:
+                printf("***Feedback dos clientes*** \n");
+                    fflush(stdin);
+
+                    //gerando arquivo em txt
+                    FILE *pont_arqFe;
+
+                    //abrindo o arquivo 
+                    pont_arqFe = fopen("Feedback clientes.txt","a");
+
+                    //testando se o arquivo foi realmente criado
+                    if(pont_arqFe == NULL)
+                    {
+                    printf("Erro na abertura do arquivo!");
+                    return 1;
+                    }
+                    else
+                    {
+                        printf("\nInforme o seu nome: ");
+                        setbuf(stdin,0);
+                        fgets(nome, 30,stdin);
+                        system("pause");
+
+                        printf("Informe a unidade que o atendeu:");
+                        setbuf(stdin,0);
+                        fgets(unidade,3,stdin);
+                        system("pause");
+
+                        printf("Voce teve uma boa experiencia com a unidade?: \n");
+                        printf("s ou n: ");
+                            scanf("%c",&expc);
+                            printf("%c",expc);
+                        if (expc == "s" || expc== "n")
+                        {
+                            if (expc == "s"){
+                                pos=pos+1;
+                                strcpy (unidade, pos);
+                                //usando fprintf para armazenar a string no arquivo
+                                fprintf(pont_arqFe, "\n");
+                                fprintf(pont_arqFe, "%s", nome);
+                                fprintf(pont_arqFe, "%d", unidade);
+                                fprintf(pont_arqFe, "Feedback positivo");
+                                fprintf(pont_arqFe, "\n/==========/");
+
+                            }
+                            else 
+                            {
+                                neg=neg+1;
+                                strcpy (unidade, neg);
+                                fprintf(pont_arqFe, "\n");
+                                fprintf(pont_arqFe, "%s", nome);
+                                fprintf(pont_arqFe, "%d", unidade);
+                                fprintf(pont_arqFe, "Feedback negativo");
+                                fprintf(pont_arqFe, "\n/==========/");
+
+                            }
+                        }
+                        if (expc !="n" || expc !="s")
+                        {
+                            printf("Por favor entre somente com s para sim ou n para não\n");
+                        }
+                        //fechando arquivo
+                        fclose(pont_arqFe);
+                        printf("Dados gravados com sucesso!\n");
+                       
+                    }
+
+                printf("\nFeedback realizado com sucesso! \n");
+
             system("pause");
             system("cls");
             break;

@@ -122,33 +122,40 @@ void main(){
                             scanf("%d",&UniPac);
 
                             switch (UniPac){
-                                case 1: unipac1=unipac1 + 1;
+                                case 1: 
+                                    unipac1=unipac1 + 1;
                                     valor1=valor1+1;
                                     system("pause");
                                     system("cls");
                                     break;
-                                case 2: unipac2=unipac2 +1;
+
+                                case 2: 
+                                    unipac2=unipac2 +1;
                                     valor2=valor2+1;
                                     system("pause");
                                     system("cls");
                                     break;
-                                case 3: unipac3=unipac3 +1;
-                                    valor3=valor3+1;
 
+                                case 3: 
+                                    unipac3=unipac3 +1;
+                                    valor3=valor3+1;
                                     system("pause");
                                     system("cls");
                                     break;
-                                default: printf("\nEssa opção não existe. Escolha uma opção válida! \n");    
+
+                                default: 
+                                    printf("\nEssa opção não existe. Escolha uma opção válida! \n");    
                             }
                             //usando fprintf para armazenar a string no arquivo
                             fprintf(pont_arq, "\n");
                             fprintf(pont_arq, "%s", nome);
                             fprintf(pont_arq, "%s", cpf);
-                            fprintf(pont_arq, "/==========/");
+                            fprintf(pont_arq, "%d", UniPac);
+                            fprintf(pont_arq, "\n/==========/");
                             
                             //fechando arquivo
                             fclose(pont_arq);
-                            printf("Dados gravados com sucesso!");
+                            printf("Dados gravados com sucesso!\n");
                         
                     }
                 cadastro_feito++;
@@ -241,11 +248,12 @@ void main(){
                             fprintf(pont_arqM, "%s", nome_med);
                             fprintf(pont_arqM, "%s", cpf_med);
                             fprintf(pont_arqM, "%s", func);
-                            fprintf(pont_arqM, "/==========/");
+                            fprintf(pont_arqM, "%d", medUni);
+                            fprintf(pont_arqM, "\n/==========/");
 
                             //fechando arquivo
                             fclose(pont_arqM);
-                            printf("Dados gravados com sucesso!");
+                            printf("Dados gravados com sucesso!\n");
                     }
 
                 printf("Cadastro realizado com sucesso!\n");
@@ -254,65 +262,100 @@ void main(){
                 break;
 
 
-                case 4: printf("Quantos funcionários serão cadastrados?: \n");
-                            scanf("%d",&tama);
-                        fflush(stdin);
-                        printf("Cadastro de funcionários: \n");
-                            for (i = 0; i < tama; i++){
+                case 4: 
+                    fflush(stdin);
+
+                    printf("Cadastro de funcionários: \n");
+                    //gerando arquivo em txt
+                    FILE *pont_arqF;
+
+                    //abrindo o arquivo 
+                    pont_arqF = fopen("Cadastro de funcionarios.txt","a");
+
+                    //testando se o arquivo foi realmente criado
+                    if(pont_arqF == NULL)
+                    {
+                    printf("Erro na abertura do arquivo!");
+                    return 1;
+                    }
+                    else
+                    {
                         printf("\nInforme o CPF do funcionário: ");
-                            gets(cadastro[i].cpf_func);
+                        setbuf(stdin,0);
+                        fgets(cpf_func, 10,stdin);
+                        system("pause");
+
                         printf("Informe o nome do funcionário: ");
-                            gets(cadastro[i].nome_func);
+                        setbuf(stdin,0);
+                        fgets(nome_func, 30,stdin);
+                        system("pause");
+
                         printf("Informe a unidade do funcionário 1,2 ou 3: ");
-                            scanf("%d",&UniFunc);
+                        scanf("%d",&UniFunc);
                         switch (UniFunc){
-                            case 1: funcuni1=funcuni1 + 1;
-                                    system("pause");
-                                        system("cls");
-                                    break;
-                            case 2: funcuni2=funcuni2 +1;
-                                    system("pause");
-                                    system("cls");
-                                    break;
-                            case 3: funcuni3=funcuni3 +1;
-                                    system("pause");
-                                        system("cls");
-                                    break;
-                            default: printf("\nEssa opção não existe. Escolha uma opção válida! \n");
+                            case 1: 
+                                funcuni1=funcuni1 + 1;
+                                system("pause");
+                                system("cls");
+                                break;
+                            case 2: 
+                                funcuni2=funcuni2 +1;
+                                system("pause");
+                                system("cls");
+                                break;
+                            case 3: 
+                                funcuni3=funcuni3 +1;
+                                system("pause");
+                                system("cls");
+                                break;
+
+                            default: 
+                            printf("\nEssa opção não existe. Escolha uma opção válida! \n");
                         }
+                        //usando fprintf para armazenar a string no arquivo
+                        fprintf(pont_arqF, "\n");
+                        fprintf(pont_arqF, "%s", nome_func);
+                        fprintf(pont_arqF, "%s", cpf_func);
+                        fprintf(pont_arqF, "%d", UniFunc);
+                        fprintf(pont_arqF, "\n/==========/");
+
+                        //fechando arquivo
+                        fclose(pont_arqF);
+                        printf("Dados gravados com sucesso!\n");
                     }
                 printf("Cadastro realizado com sucesso! \n");
                 system("pause");
                 system("cls");
                 break;
 
-                case 5: printf("***Feedback dos clientes*** \n");
-                        fflush(stdin);
+                case 5: 
+                    printf("***Feedback dos clientes*** \n");
+                    fflush(stdin);
 
-                        printf("\nInforme o seu nome: ");
-                            gets(nome);
-                        printf("Informe a unidade que o atendeu: ");
-                            gets(unidade);
+                    printf("\nInforme o seu nome: ");
+                        gets(nome);
+                    printf("Informe a unidade que o atendeu: ");
+                        gets(unidade);
 
-                        printf("Voce teve uma boa experiencia com a unidade?: \n");
-                        printf("s ou n: ");
-                            scanf("%c",&expc);
-                            strlwr(expc);
-                        if (expc == 's' || expc== 'n'){
+                    printf("Voce teve uma boa experiencia com a unidade?: \n");
+                    printf("s ou n: ");
+                        scanf("%c",&expc);
+                        strlwr(expc);
+                    if (expc == 's' || expc== 'n'){
 
-                            if (expc == 's'){
-                                pos=pos+1;
-                                strcpy (unidade, pos);
-                            }
-                            if (expc == 'n'){
-                                neg=neg+1;
-                                strcpy (unidade, neg);
-                            }
+                        if (expc == 's'){
+                            pos=pos+1;
+                            strcpy (unidade, pos);
                         }
-                        if (expc !='n' && expc !='s'){
-                            printf("Por favor entre somente com s para sim ou n para não");
-
+                        if (expc == 'n'){
+                            neg=neg+1;
+                            strcpy (unidade, neg);
                         }
+                    }
+                    if (expc !='n' && expc !='s'){
+                        printf("Por favor entre somente com s para sim ou n para não");
+
+                    }
 
                 printf("\nFeedback realizado com sucesso! \n");
                 system("pause");
