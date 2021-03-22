@@ -1,0 +1,17 @@
+
+AAAAAA
+2
+Feedback positivo
+/==========/
+BBBBBB
+1
+Feedback negativo
+/==========/
+dddddddd
+1
+Feedback positivo
+/==========/
+eeeeee
+2
+Feedback negativo
+/==========/

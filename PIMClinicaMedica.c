@@ -61,7 +61,7 @@ printf("Relatorios\n");
 void main(){
     setlocale(LC_ALL, "");
 
-    int i, cont= 0, result=0, opcao, codigo, tam=0,achou=0,cadastro_feito=0,unidade[3],pos,neg,tama,unidademed1=0,unidademed2=0,unidademed3=0,medUni,funcuni1=0,funcuni2=0,funcuni3=0,UniFunc,UniPac,achou2=0,unipac1=0,unipac2=0,unipac3=0,total,total2,total3,maiorPac,maiorFunc,maiorMed,valor1=0,valor2=0,valor3=0;
+    int i, cont= 0, result=0, expc = 0, opcao, codigo, tam=0,achou=0,cadastro_feito=0,unidade[3],pos,neg,tama,unidademed1=0,unidademed2=0,unidademed3=0,medUni,funcuni1=0,funcuni2=0,funcuni3=0,UniFunc,UniPac,achou2=0,unipac1=0,unipac2=0,unipac3=0,total,total2,total3,maiorPac,maiorFunc,maiorMed,valor1=0,valor2=0,valor3=0;
     paciente cadastro[tam];
     char nome[30], cpf[10], nome_med[30],cpf_med[10],cpf_func[10],nome_func[30],expc[1],func[20];
 
@@ -332,32 +332,72 @@ void main(){
                     printf("***Feedback dos clientes*** \n");
                     fflush(stdin);
 
-                    printf("\nInforme o seu nome: ");
-                        gets(nome);
-                    printf("Informe a unidade que o atendeu: ");
-                        gets(unidade);
+                    //gerando arquivo em txt
+                    FILE *pont_arqFe;
 
-                    printf("Voce teve uma boa experiencia com a unidade?: \n");
-                    printf("s ou n: ");
-                        scanf("%c",&expc);
-                        strlwr(expc);
-                    if (expc == 's' || expc== 'n'){
+                    //abrindo o arquivo 
+                    pont_arqFe = fopen("Feedback clientes.txt","a");
 
-                        if (expc == 's'){
-                            pos=pos+1;
-                            strcpy (unidade, pos);
-                        }
-                        if (expc == 'n'){
-                            neg=neg+1;
-                            strcpy (unidade, neg);
-                        }
+                    //testando se o arquivo foi realmente criado
+                    if(pont_arqFe == NULL)
+                    {
+                    printf("Erro na abertura do arquivo!");
+                    return 1;
                     }
-                    if (expc !='n' && expc !='s'){
-                        printf("Por favor entre somente com s para sim ou n para não");
+                    else
+                    {
+                        printf("\nInforme o seu nome: ");
+                        setbuf(stdin,0);
+                        fgets(nome, 30,stdin);
+                        system("pause");
 
+                        printf("Informe a unidade que o atendeu:");
+                        setbuf(stdin,0);
+                        fgets(unidade,3,stdin);
+                        system("pause");
+
+                        printf("Voce teve uma boa experiencia com a unidade?: \n");
+                        printf("1-sim ou 2-não: ");
+                            scanf("%d",&expc);
+
+                            if (expc == 1)
+                            {
+                                pos=pos+1;
+                
+                                //usando fprintf para armazenar a string no arquivo
+                                fprintf(pont_arqFe, "\n");
+                                fprintf(pont_arqFe, "%s", nome);
+                                fprintf(pont_arqFe, "%s", unidade);
+                                fprintf(pont_arqFe, "Feedback positivo");
+                                fprintf(pont_arqFe, "\n/==========/");
+
+                                printf("Dados gravados com sucesso!\n");
+                                printf("\nFeedback realizado com sucesso! \n");
+
+                            }
+                            else if(expc == 2) 
+                            {
+                                neg=neg+1;
+
+                                fprintf(pont_arqFe, "\n");
+                                fprintf(pont_arqFe, "%s", nome);
+                                fprintf(pont_arqFe, "%s", unidade);
+                                fprintf(pont_arqFe, "Feedback negativo");
+                                fprintf(pont_arqFe, "\n/==========/");
+
+                                printf("Dados gravados com sucesso!\n");
+                                printf("\nFeedback realizado com sucesso! \n");
+
+                            }
+                            else
+                            {
+                                printf("Por favor entre somente com s para sim ou n para não\n");
+                                printf("\nFeedback NÃO realizado!\n");
+                            }
+                        //fechando arquivo
+                        fclose(pont_arqFe);       
                     }
 
-                printf("\nFeedback realizado com sucesso! \n");
                 system("pause");
                 system("cls");
                 break;
