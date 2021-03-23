@@ -42,7 +42,7 @@ int login (int *log)
 void exibeMenu(){
     printf("*** Menu ***\n");
 		printf("[1] Cadastrar paciente \n");
-		printf("[2] Cadastrar agendamento do paciente \n");
+		printf("[2] Agendar Consulta \n");
 		printf("[3] Cadastrar médicos \n");
 		printf("[4] Cadastrar funcionários \n");
 		printf("[5] Feedback dos pacientes \n");
@@ -62,10 +62,10 @@ printf("Relatorios\n");
 
 int main(){
 
-    int cont= 0, result=0, opcao, codigo, tam=0,achou=0,cadastro_feito=0,unidade[3],pos,neg,tama,unidademed1=0,unidademed2=0,unidademed3=0,medUni=0,funcuni1=0,funcuni2=0,funcuni3=0,UniFunc,UniPac,achou2=0,unipac1=0,unipac2=0,unipac3=0,total,total2,total3,maiorPac,maiorFunc,maiorMed,valor1=0,valor2=0,valor3=0;
+    int cont= 0, result=0, opcao, codigo, tam=0,achou=0,cadastro_feito=0,unidade[3],pos,neg,tama=10,unidademed1=0,unidademed2=0,unidademed3=0,medUni=0,funcuni1=0,funcuni2=0,funcuni3=0,UniFunc,UniPac,achou2=0,unipac1=0,unipac2=0,unipac3=0,total,total2,total3,maiorPac,maiorFunc,maiorMed,valor1=0,valor2=0,valor3=0;
     paciente cadastro[tam];
-    char nome[30], cpf[10], nome_med[30],cpf_med[10],cpf_func[10],nome_func[30],func[20];
-    int expc = 0;
+    char nome[30], cpf[10], nome_med[30],cpf_med[10],cpf_func[10],nome_func[30],func[20],dia[20],mes[20];
+    int expc = 0 ;
 
     login(&result);
     printf("%s",nome_func);
@@ -93,16 +93,57 @@ int main(){
             system("cls");
             break;
 
-                
+            case 2: 
+                printf("Agendamento de Consultas!");
 
-            case 2: fflush(stdin);
-               
+                printf("\nInforme seu CPF: ");
+                setbuf(stdin,0);
+                fgets(cpf,10,stdin);
+
+                system("pause");
+                
+                //gerando arquivo em txt
+                FILE *pont_arqAg;
+
+                //abrindo o arquivo 
+                pont_arqAg=fopen("Agendamento de consulta.txt","a");
+
+                //testando se o arquivo foi realmente criado
+                if(pont_arqAg == NULL)
+                {
+                printf("Erro na abertura do arquivo!");
+                return 1;
+                } 
+                else
+                {
+                printf("Digite o dia do agendamento: \n");
+                setbuf(stdin,0);
+                fgets(dia,20,stdin);
+
+                system("pause");
+                
+                printf("Digite o mes do agendamento: \n");
+                setbuf(stdin,0);
+                fgets(mes,20,stdin);
+                
+                system("pause");
+
+                //usando fprintf para armazenar a string no arquivo
+                fprintf(pont_arqAg, "\n");
+                fprintf(pont_arqAg, "%s", cpf);
+                fprintf(pont_arqAg, "Dia: %s", dia);
+                fprintf(pont_arqAg, "Mes: %s", mes);
+                fprintf(pont_arqAg, "\n/==========/");
+                
+                //fechando arquivo
+                fclose(pont_arqAg);
+                printf("Dados gravados com sucesso!\n");
+
+                }
+            
             system("pause");
             system("cls");
             break;
-    
-                
-            
 
             case 3: 
                 

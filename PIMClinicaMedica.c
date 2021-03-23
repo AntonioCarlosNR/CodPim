@@ -63,7 +63,7 @@ void main(){
 
     int i, cont= 0, result=0, expc = 0, opcao, codigo, tam=0,achou=0,cadastro_feito=0,unidade[3],pos,neg,tama,unidademed1=0,unidademed2=0,unidademed3=0,medUni,funcuni1=0,funcuni2=0,funcuni3=0,UniFunc,UniPac,achou2=0,unipac1=0,unipac2=0,unipac3=0,total,total2,total3,maiorPac,maiorFunc,maiorMed,valor1=0,valor2=0,valor3=0;
     paciente cadastro[tam];
-    char nome[30], cpf[10], nome_med[30],cpf_med[10],cpf_func[10],nome_func[30],expc[1],func[20];
+    char nome[30], cpf[10], nome_med[30],cpf_med[10],cpf_func[10],nome_func[30],func[20],dia[20],mes[20];
 
     printf("Bem vindo ao aplicativo de Gestão de clinicas médicas!!!\n");
     login(&result);
@@ -148,9 +148,9 @@ void main(){
                             }
                             //usando fprintf para armazenar a string no arquivo
                             fprintf(pont_arq, "\n");
-                            fprintf(pont_arq, "%s", nome);
-                            fprintf(pont_arq, "%s", cpf);
-                            fprintf(pont_arq, "%d", UniPac);
+                            fprintf(pont_arq, "Nome do paciente: %s", nome);
+                            fprintf(pont_arq, "CPF do paciente: %s", cpf);
+                            fprintf(pont_arq, "Unidade: %d", UniPac);
                             fprintf(pont_arq, "\n/==========/");
                             
                             //fechando arquivo
@@ -165,33 +165,57 @@ void main(){
                 break;
 
 
-                case 2: fflush(stdin);
-                    if (cadastro_feito==0){
-                    printf("Os pacientes não foram cadastrados!\n");
-                }else{
-                    fflush(stdin);
-                        printf("\nInforme seu CPF: ");
-                        gets(cpf);
-                        achou = 0;
+                case 2: 
+                    printf("Agendamento de Consultas!");
 
-                        for (i = 0; i < tama; i++){
-                            if (strcmp(cpf, cadastro[i].cpf) == 0){
-                                achou = 1;
-                                printf("Digite o dia do agendamento: \n");
-                                    gets(cadastro[i].dia);
-                                    fflush(stdin);
-                                printf("Digite o mes do agendamento: \n");
-                                    gets(cadastro[i].mes);
-                                    fflush(stdin);
-                            }
-                        }
-                            fflush(stdin);
-                        if (achou == 0)
-                            printf("O CPF digitado não foi encontrado! Digite um CPF válido! \n");
-                }
-                        system("pause");
-                        system("cls");
-                            break;
+                    printf("\nInforme seu CPF: ");
+                    setbuf(stdin,0);
+                    fgets(cpf,10,stdin);
+
+                    system("pause");
+                    
+                    //gerando arquivo em txt
+                    FILE *pont_arqAg;
+
+                    //abrindo o arquivo 
+                    pont_arqAg=fopen("Agendamento de consulta.txt","a");
+
+                    //testando se o arquivo foi realmente criado
+                    if(pont_arqAg == NULL)
+                    {
+                    printf("Erro na abertura do arquivo!");
+                    return 1;
+                    } 
+                    else
+                    {
+                    printf("Digite o dia do agendamento: \n");
+                    setbuf(stdin,0);
+                    fgets(dia,20,stdin);
+
+                    system("pause");
+                    
+                    printf("Digite o mes do agendamento: \n");
+                    setbuf(stdin,0);
+                    fgets(mes,20,stdin);
+                    
+                    system("pause");
+
+                    //usando fprintf para armazenar a string no arquivo
+                    fprintf(pont_arqAg, "\n");
+                    fprintf(pont_arqAg, "CPF do paciente: %s", cpf);
+                    fprintf(pont_arqAg, "Dia: %s", dia);
+                    fprintf(pont_arqAg, "Mes: %s", mes);
+                    fprintf(pont_arqAg, "\n/==========/");
+                    
+                    //fechando arquivo
+                    fclose(pont_arqAg);
+                    printf("Dados gravados com sucesso!\n");
+
+                    }
+                
+                system("pause");
+                system("cls");
+                break;
 
                 case 3: 
                     fflush(stdin);
@@ -245,10 +269,10 @@ void main(){
                         }
                             //usando fprintf para armazenar a string no arquivo
                             fprintf(pont_arqM, "\n");
-                            fprintf(pont_arqM, "%s", nome_med);
-                            fprintf(pont_arqM, "%s", cpf_med);
-                            fprintf(pont_arqM, "%s", func);
-                            fprintf(pont_arqM, "%d", medUni);
+                            fprintf(pont_arqM, "Nome do medico: %s", nome_med);
+                            fprintf(pont_arqM, "CPF do medico: %s", cpf_med);
+                            fprintf(pont_arqM, "Especialidade: %s", func);
+                            fprintf(pont_arqM, "Unidade que atua: %d", medUni);
                             fprintf(pont_arqM, "\n/==========/");
 
                             //fechando arquivo
@@ -263,7 +287,6 @@ void main(){
 
 
                 case 4: 
-                    fflush(stdin);
 
                     printf("Cadastro de funcionários: \n");
                     //gerando arquivo em txt
@@ -314,9 +337,9 @@ void main(){
                         }
                         //usando fprintf para armazenar a string no arquivo
                         fprintf(pont_arqF, "\n");
-                        fprintf(pont_arqF, "%s", nome_func);
-                        fprintf(pont_arqF, "%s", cpf_func);
-                        fprintf(pont_arqF, "%d", UniFunc);
+                        fprintf(pont_arqF, "Nome do funcionario: %s", nome_func);
+                        fprintf(pont_arqF, "CPF do Funcionario: %s", cpf_func);
+                        fprintf(pont_arqF, "Unidade do funcionario: %d", UniFunc);
                         fprintf(pont_arqF, "\n/==========/");
 
                         //fechando arquivo
@@ -366,8 +389,8 @@ void main(){
                 
                                 //usando fprintf para armazenar a string no arquivo
                                 fprintf(pont_arqFe, "\n");
-                                fprintf(pont_arqFe, "%s", nome);
-                                fprintf(pont_arqFe, "%s", unidade);
+                                fprintf(pont_arqFe, "Nome: %s", nome);
+                                fprintf(pont_arqFe, "Unidade: %s", unidade);
                                 fprintf(pont_arqFe, "Feedback positivo");
                                 fprintf(pont_arqFe, "\n/==========/");
 
