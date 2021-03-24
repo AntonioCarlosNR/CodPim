@@ -88,10 +88,84 @@ int main(){
 		switch (opcao){
 
             case 1:
-                
-            system("pause");
-            system("cls");
-            break;
+                fflush(stdin);
+                    printf("20 reais o cadastro!\n");
+                    fflush(stdin);
+
+                    //gerando arquivo em txt
+                    FILE *pont_arq;
+
+                    //abrindo o arquivo 
+                    pont_arq=fopen("Cadastro de pacientes.txt","a");
+
+                    //testando se o arquivo foi realmente criado
+                    if(pont_arq == NULL)
+                    {
+                    printf("Erro na abertura do arquivo!");
+                    return 1;
+                    } 
+                    else
+                    {
+                        printf("Cadastro de pacientes: \n");
+                        
+                            printf("\nInforme o CPF do paciente: ");
+                            setbuf(stdin,0);
+                            fgets(cpf,10,stdin);                            
+
+                            system("pause");
+
+                            printf("\nInforme o nome do paciente: ");
+                            setbuf(stdin,0);
+                            fgets(nome,30,stdin);
+
+                            system("pause");
+
+                            printf("Informe a unidade do paciente 1,2 ou 3: \n");
+                            scanf("%d",&UniPac);
+
+                            switch (UniPac){
+                                case 1: 
+                                    unipac1=unipac1 + 1;
+                                    valor1=valor1+1;
+                                    system("pause");
+                                    system("cls");
+                                    break;
+
+                                case 2: 
+                                    unipac2=unipac2 +1;
+                                    valor2=valor2+1;
+                                    system("pause");
+                                    system("cls");
+                                    break;
+
+                                case 3: 
+                                    unipac3=unipac3 +1;
+                                    valor3=valor3+1;
+                                    system("pause");
+                                    system("cls");
+                                    break;
+
+                                default: 
+                                    printf("\nEssa opção não existe. Escolha uma opção válida! \n");    
+                            }
+                            //usando fprintf para armazenar a string no arquivo
+                            fprintf(pont_arq, "\n");
+                            fprintf(pont_arq, "Nome do paciente: %s", nome);
+                            fprintf(pont_arq, "CPF do paciente: %s", cpf);
+                            fprintf(pont_arq, "Unidade: %d", UniPac);
+                            fprintf(pont_arq, "\n/==========/");
+                            
+                            //fechando arquivo
+                            fclose(pont_arq);
+                            printf("Dados gravados com sucesso!\n");
+                        
+                    }
+                cadastro_feito++;
+                printf("\nCadastro realizado com sucesso! \n");
+                system("pause");
+                system("cls");
+                break;
+
 
             case 2: 
                 printf("Agendamento de Consultas!");
@@ -233,9 +307,118 @@ int main(){
             break;
 
             case 6:
-                system("pause");
-            system("cls");
-            break;
+                do{
+                        exibeRelatorio();
+                        printf("Escolha a opção: ");
+                            scanf("%d",&opcao);
+                        switch(opcao){
+                                case 1:
+                                    fflush(stdin);
+                                    printf("Pacientes registrados na unidade 1:%d\n",unipac1);
+                                    
+                                    fflush(stdin);
+                                    printf("Pacientes registrados na unidade 2:%d\n",unipac2);
+                                    
+                                    fflush(stdin);
+                                    printf("Pacientes registrados na unidade 3:%d\n",unipac3);
+                                    
+                                    fflush(stdin);
+                                    printf("Pacientes em total das unidades:%d\n",unipac1+unipac2+unipac3);
+
+                                   printf("Deseja abrir o relatório detalhado?\n");
+
+                                    printf("1-sim ou 2-não:");
+                                     scanf("%d",&opcao);
+                                        if(opcao == 1)
+                                        {
+                                            printf("passou no if");
+                                            pont_arq = fopen("Cadastro de pacientes.txt","r");
+                                        }
+
+                                    system("pause");
+                                    system("cls");
+                                    break;
+
+                                case 2:
+                                        printf("Médicos registrados na unidade 1:%d\n",unidademed1);
+                                        printf("Médicos registrados na unidade 2:%d\n",unidademed2);
+                                        printf("Médicos registrados na unidade 3:%d\n",unidademed3);
+                                        printf("Total de médicos registrados nas unidades: %d",unidademed1+unidademed2+unidademed3);
+                                    system("pause");
+                                    system("cls");
+                                    break;
+
+                                case 3:
+                                        printf("Funcionários registrados na unidade 1:%d\n",funcuni1);
+                                        printf("Funcionários registrados na unidade 2:%d\n",funcuni2);
+                                        printf("Funcionários registrados na unidade 3:%d\n",funcuni3);
+                                        printf("Total de funcionários registrados:%d\n",funcuni1+funcuni2+funcuni3);
+                                    system("pause");
+                                    system("cls");
+                                    break;
+
+                                case 4:
+                                            maiorPac=unipac1;
+                                            if  (unipac2>maiorPac)
+                                                maiorPac=unipac2;
+
+                                            if (unipac3>maiorPac)
+                                                maiorPac=unipac3;
+
+                                        if (maiorPac=unipac1){
+                                        printf("\nUnidade que mais atende pacientes é a unidade 1\n");
+                                        }
+                                        if (maiorPac=unipac2){
+                                        printf("\nUnidade que mais atende pacientes é a unidade 2\n");
+                                        }
+                                        if (maiorPac=unipac3){
+                                        printf("\nUnidade que mais atende pacientes é a unidade 3\n");
+                                        }
+                                            maiorFunc=funcuni1;
+                                            if  (funcuni2>maiorFunc)
+                                                maiorFunc=funcuni2;
+                                            if (funcuni3>maiorFunc)
+                                                maiorFunc=funcuni3;
+                                        if (maiorFunc=funcuni1){
+                                        printf("\nUnidade com o maior número de funcionários é a unidade 1\n");
+                                        }
+                                        if (maiorFunc=funcuni2){
+                                        printf("\nUnidade com o maior número de funcionários é a unidade 2\n");
+                                        }
+                                        if (maiorFunc=funcuni3){
+                                        printf("\nUnidade com o maior número de funcionários é a unidade 3\n");
+                                        }
+                                        maiorMed=unidademed1;
+                                        if (unidademed2>maiorMed)
+                                            maiorMed=unidademed2;
+
+                                        if (unidademed3>maiorMed)
+                                        maiorMed=unidademed3;
+
+                                    if (maiorMed=unidademed1){
+                                    printf("\nA unidade com o maior número de médicos é a unidade 1\n");
+                                    }
+                                    if (maiorMed=unidademed2){
+                                    printf("\nA unidade com o maior número de médicos é a unidade 2\n");
+                                    }
+                                    if (maiorMed=unidademed3){
+                                    printf("\nA unidade com o maior número de médicos é a unidade 3\n");
+                                    }
+
+                                    system("pause");
+                                    system("cls");
+                                    break;
+
+                            case 5: printf("Valor faturado pela unidade 1: %d\n",valor1*20);
+                                    printf("Valor faturado pela unidade 2: %d\n",valor2*20);
+                                    printf("Valor faturado pela unidade 3: %d\n",valor3*20);
+                                    printf("Valor total de todas unidades: %d\n",valor1*20,valor2*20,valor3*20);
+                        case 0:
+                                    system("pause");
+                                    system("cls");
+                                    break;
+                    }
+                }while (opcao !=0);
         }
     }while (opcao != 0);
     }

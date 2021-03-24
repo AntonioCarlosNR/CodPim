@@ -40,7 +40,7 @@ int login (int *log)
 void exibeMenu(){
     printf("*** Menu ***\n");
 		printf("[1] Cadastrar paciente \n");
-		printf("[2] Cadastrar agendamento do paciente \n");
+		printf("[2] Agendamento de Consultas \n");
 		printf("[3] Cadastrar médicos \n");
 		printf("[4] Cadastrar funcionários \n");
 		printf("[5] Feedback dos pacientes \n");
@@ -74,7 +74,7 @@ void main(){
             login(result);
             cont ++;
         }while(cont <= 3);
-        printf("O sistema será encerrado\n Tente novamente mais tarde.\n");
+        printf("O sistema será encerrado\n\nTente novamente mais tarde.\n");
     }
     else
     {
@@ -429,100 +429,113 @@ void main(){
                     do{
                         exibeRelatorio();
                         printf("Escolha a opção: ");
-                            scanf("%d",&opcao);
+                        scanf("%d",&opcao);
+                        
                         switch(opcao){
-                                case 1:fflush(stdin);
-                                    printf("Pacientes registrados na unidade 1:%d\n",unipac1);
-                                    fflush(stdin);
-                                    printf("Pacientes registrados na unidade 2:%d\n",unipac2);
-                                    fflush(stdin);
-                                    printf("Pacientes registrados na unidade 3:%d\n",unipac3);
-                                    fflush(stdin);
-                                    printf("Pacientes em total das unidades:%d\n",unipac1+unipac2+unipac3);
-                                    system("pause");
-                                    system("cls");
-                                    break;
 
-                                case 2:
-                                        printf("Médicos registrados na unidade 1:%d\n",unidademed1);
-                                        printf("Médicos registrados na unidade 2:%d\n",unidademed2);
-                                        printf("Médicos registrados na unidade 3:%d\n",unidademed3);
-                                        printf("Total de médicos registrados nas unidades: %d",unidademed1+unidademed2+unidademed3);
-                                    system("pause");
-                                    system("cls");
-                                    break;
+                            case 1:fflush(stdin);
+                                printf("Pacientes registrados na unidade 1:%d\n",unipac1);
+                                fflush(stdin);
+                                printf("Pacientes registrados na unidade 2:%d\n",unipac2);
+                                fflush(stdin);
+                                printf("Pacientes registrados na unidade 3:%d\n",unipac3);
+                                fflush(stdin);
+                                printf("Pacientes em total das unidades:%d\n",unipac1+unipac2+unipac3);
 
-                                case 3:
-                                        printf("Funcionários registrados na unidade 1:%d\n",funcuni1);
-                                        printf("Funcionários registrados na unidade 2:%d\n",funcuni2);
-                                        printf("Funcionários registrados na unidade 3:%d\n",funcuni3);
-                                        printf("Total de funcionários registrados:%d\n",funcuni1+funcuni2+funcuni3);
-                                    system("pause");
-                                    system("cls");
-                                    break;
+                                printf("\nPara mais detalhes busque o arquivo 'Cadastro de pacientes.txt'");
 
-                                case 4:
-                                            maiorPac=unipac1;
-                                            if  (unipac2>maiorPac)
-                                                maiorPac=unipac2;
+                                system("pause");
+                                system("cls");
+                                break;
 
-                                            if (unipac3>maiorPac)
-                                                maiorPac=unipac3;
+                            case 2:
+                                printf("Médicos registrados na unidade 1:%d\n",unidademed1);
+                                printf("Médicos registrados na unidade 2:%d\n",unidademed2);
+                                printf("Médicos registrados na unidade 3:%d\n",unidademed3);
+                                printf("Total de médicos registrados nas unidades: %d",unidademed1+unidademed2+unidademed3);
 
-                                        if (maiorPac=unipac1){
-                                        printf("\nUnidade que mais atende pacientes é a unidade 1\n");
-                                        }
-                                        if (maiorPac=unipac2){
-                                        printf("\nUnidade que mais atende pacientes é a unidade 2\n");
-                                        }
-                                        if (maiorPac=unipac3){
-                                        printf("\nUnidade que mais atende pacientes é a unidade 3\n");
-                                        }
-                                            maiorFunc=funcuni1;
-                                            if  (funcuni2>maiorFunc)
-                                                maiorFunc=funcuni2;
-                                            if (funcuni3>maiorFunc)
-                                                maiorFunc=funcuni3;
-                                        if (maiorFunc=funcuni1){
-                                        printf("\nUnidade com o maior número de funcionários é a unidade 1\n");
-                                        }
-                                        if (maiorFunc=funcuni2){
-                                        printf("\nUnidade com o maior número de funcionários é a unidade 2\n");
-                                        }
-                                        if (maiorFunc=funcuni3){
-                                        printf("\nUnidade com o maior número de funcionários é a unidade 3\n");
-                                        }
-                                        maiorMed=unidademed1;
-                                        if (unidademed2>maiorMed)
-                                            maiorMed=unidademed2;
+                                printf("\nPara mais detalhes busque o arquivo 'Cadastro de medicos.txt'");
 
-                                        if (unidademed3>maiorMed)
-                                        maiorMed=unidademed3;
+                                system("pause");
+                                system("cls");
+                                break;
 
-                                    if (maiorMed=unidademed1){
-                                    printf("\nA unidade com o maior número de médicos é a unidade 1\n");
-                                    }
-                                    if (maiorMed=unidademed2){
-                                    printf("\nA unidade com o maior número de médicos é a unidade 2\n");
-                                    }
-                                    if (maiorMed=unidademed3){
-                                    printf("\nA unidade com o maior número de médicos é a unidade 3\n");
-                                    }
+                            case 3:
+                                printf("Funcionários registrados na unidade 1:%d\n",funcuni1);
+                                printf("Funcionários registrados na unidade 2:%d\n",funcuni2);
+                                printf("Funcionários registrados na unidade 3:%d\n",funcuni3);
+                                printf("Total de funcionários registrados:%d\n",funcuni1+funcuni2+funcuni3);
 
-                                    system("pause");
-                                    system("cls");
-                                    break;
+                                printf("\nPara mais detalhes busque o arquivo 'Cadastro de funcionarios.txt'");
+
+                                system("pause");
+                                system("cls");
+                                break;
+
+                            case 4:
+                                maiorPac=unipac1;
+                                if  (unipac2>maiorPac)
+                                    maiorPac=unipac2;
+
+                                if (unipac3>maiorPac)
+                                    maiorPac=unipac3;
+
+                                if (maiorPac=unipac1){
+                                printf("\nUnidade que mais atende pacientes é a unidade 1\n");
+                                }
+                                if (maiorPac=unipac2){
+                                printf("\nUnidade que mais atende pacientes é a unidade 2\n");
+                                }
+                                if (maiorPac=unipac3){
+                                printf("\nUnidade que mais atende pacientes é a unidade 3\n");
+                                }
+                                    maiorFunc=funcuni1;
+                                    if  (funcuni2>maiorFunc)
+                                        maiorFunc=funcuni2;
+                                    if (funcuni3>maiorFunc)
+                                        maiorFunc=funcuni3;
+                                if (maiorFunc=funcuni1){
+                                printf("\nUnidade com o maior número de funcionários é a unidade 1\n");
+                                }
+                                if (maiorFunc=funcuni2){
+                                printf("\nUnidade com o maior número de funcionários é a unidade 2\n");
+                                }
+                                if (maiorFunc=funcuni3){
+                                printf("\nUnidade com o maior número de funcionários é a unidade 3\n");
+                                }
+                                maiorMed=unidademed1;
+                                if (unidademed2>maiorMed)
+                                    maiorMed=unidademed2;
+
+                                if (unidademed3>maiorMed)
+                                maiorMed=unidademed3;
+
+                                if (maiorMed=unidademed1){
+                                printf("\nA unidade com o maior número de médicos é a unidade 1\n");
+                                }
+                                if (maiorMed=unidademed2){
+                                printf("\nA unidade com o maior número de médicos é a unidade 2\n");
+                                }
+                                if (maiorMed=unidademed3){
+                                printf("\nA unidade com o maior número de médicos é a unidade 3\n");
+                                }
+
+                                system("pause");
+                                system("cls");
+                                break;
 
                             case 5: printf("Valor faturado pela unidade 1: %d\n",valor1*20);
                                     printf("Valor faturado pela unidade 2: %d\n",valor2*20);
                                     printf("Valor faturado pela unidade 3: %d\n",valor3*20);
                                     printf("Valor total de todas unidades: %d\n",valor1*20,valor2*20,valor3*20);
-                        case 0:
-                                    system("pause");
-                                    system("cls");
-                                    break;
-                    }
+
+                            case 0:
+                                system("pause");
+                                system("cls");
+                                break;
+                        }
                 }while (opcao !=0);
+                
                 case 0: printf("\nPrograma finalizado! \n");
                         break;
 
