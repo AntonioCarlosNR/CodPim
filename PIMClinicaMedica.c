@@ -13,7 +13,7 @@ int login (int *log)
 {
     char login[15] = "MEU_LOGIN", cpf_func[10], nome_func[30], login1[15], senha[15] = "MINHA_SENHA", senha1[15];
 
-    printf("LOGIN: ");
+    printf("\nLOGIN: ");
     scanf("%s",login1);
     if (strcmp(login, login1) == 0 || strcmp(nome_func, login1) == 0) //strcmp() é uma função da biblioteca string.h que compara 2 strings. Se for igual a 0 é porque as duas são iguais.
     {
@@ -44,18 +44,18 @@ void exibeMenu(){
 		printf("[3] Cadastrar médicos \n");
 		printf("[4] Cadastrar funcionários \n");
 		printf("[5] Feedback dos pacientes \n");
-		printf("[6] Relatório das Unidades \n");
+		printf("[6] Relatório\n");
 		printf("[0] Sair \n");
 }
 
 void exibeRelatorio(){
-printf("Relatorios\n");
+printf("\nRelatorios\n");
 		printf("[1] Pacientes por unidade \n");
 		printf("[2] Médicos por unidade \n");
 		printf("[3] Funcionários por unidade\n");
 		printf("[4] Unidade da rede que mais atende\n");
 		printf("[5] Valor total adquirido diariamente\n");
-		printf("[0] Voltar ao menu\n");
+		printf("[0] Sair\n");
 }
 
 void main(){
@@ -65,7 +65,7 @@ void main(){
     paciente cadastro[tam];
     char nome[30], cpf[10], nome_med[30],cpf_med[10],cpf_func[10],nome_func[30],func[20],dia[20],mes[20];
 
-    printf("Bem vindo ao aplicativo de Gestão de clinicas médicas!!!\n");
+    printf("\nBem vindo ao aplicativo de Gestão de clinicas médicas!!!\n");
     login(&result);
 
     if(result != 1)
@@ -73,7 +73,7 @@ void main(){
         do{
             login(result);
             cont ++;
-        }while(cont <= 3);
+        }while(cont < 3);
         printf("O sistema será encerrado\n\nTente novamente mais tarde.\n");
     }
     else
@@ -87,7 +87,7 @@ void main(){
 
                 case 1:
                     fflush(stdin);
-                    printf("20 reais o cadastro!\n");
+                    printf("100 reais o cadastro com agendamento!\n");
                     fflush(stdin);
 
                     //gerando arquivo em txt
@@ -151,7 +151,7 @@ void main(){
                             fprintf(pont_arq, "Nome do paciente: %s", nome);
                             fprintf(pont_arq, "CPF do paciente: %s", cpf);
                             fprintf(pont_arq, "Unidade: %d", UniPac);
-                            fprintf(pont_arq, "\n/==========/");
+                            fprintf(pont_arq, "\n/==========//==========/");
                             
                             //fechando arquivo
                             fclose(pont_arq);
@@ -205,7 +205,7 @@ void main(){
                     fprintf(pont_arqAg, "CPF do paciente: %s", cpf);
                     fprintf(pont_arqAg, "Dia: %s", dia);
                     fprintf(pont_arqAg, "Mes: %s", mes);
-                    fprintf(pont_arqAg, "\n/==========/");
+                    fprintf(pont_arqAg, "\n/==========//==========/");
                     
                     //fechando arquivo
                     fclose(pont_arqAg);
@@ -273,7 +273,7 @@ void main(){
                             fprintf(pont_arqM, "CPF do medico: %s", cpf_med);
                             fprintf(pont_arqM, "Especialidade: %s", func);
                             fprintf(pont_arqM, "Unidade que atua: %d", medUni);
-                            fprintf(pont_arqM, "\n/==========/");
+                            fprintf(pont_arqM, "\n/==========//==========/");
 
                             //fechando arquivo
                             fclose(pont_arqM);
@@ -340,7 +340,7 @@ void main(){
                         fprintf(pont_arqF, "Nome do funcionario: %s", nome_func);
                         fprintf(pont_arqF, "CPF do Funcionario: %s", cpf_func);
                         fprintf(pont_arqF, "Unidade do funcionario: %d", UniFunc);
-                        fprintf(pont_arqF, "\n/==========/");
+                        fprintf(pont_arqF, "\n/==========//==========/");
 
                         //fechando arquivo
                         fclose(pont_arqF);
@@ -374,12 +374,12 @@ void main(){
                         fgets(nome, 30,stdin);
                         system("pause");
 
-                        printf("Informe a unidade que o atendeu:");
+                        printf("\nInforme a unidade que o atendeu:");
                         setbuf(stdin,0);
                         fgets(unidade,3,stdin);
                         system("pause");
 
-                        printf("Voce teve uma boa experiencia com a unidade?: \n");
+                        printf("\nVoce teve uma boa experiencia com a unidade?: \n");
                         printf("1-sim ou 2-não: ");
                             scanf("%d",&expc);
 
@@ -392,9 +392,9 @@ void main(){
                                 fprintf(pont_arqFe, "Nome: %s", nome);
                                 fprintf(pont_arqFe, "Unidade: %s", unidade);
                                 fprintf(pont_arqFe, "Feedback positivo");
-                                fprintf(pont_arqFe, "\n/==========/");
+                                fprintf(pont_arqFe, "\n/==========//==========/");
 
-                                printf("Dados gravados com sucesso!\n");
+                                printf("\nDados gravados com sucesso!\n");
                                 printf("\nFeedback realizado com sucesso! \n");
 
                             }
@@ -406,7 +406,7 @@ void main(){
                                 fprintf(pont_arqFe, "%s", nome);
                                 fprintf(pont_arqFe, "%s", unidade);
                                 fprintf(pont_arqFe, "Feedback negativo");
-                                fprintf(pont_arqFe, "\n/==========/");
+                                fprintf(pont_arqFe, "\n/==========//==========/");
 
                                 printf("Dados gravados com sucesso!\n");
                                 printf("\nFeedback realizado com sucesso! \n");
@@ -433,40 +433,41 @@ void main(){
                         
                         switch(opcao){
 
-                            case 1:fflush(stdin);
-                                printf("Pacientes registrados na unidade 1:%d\n",unipac1);
+                            case 1:
                                 fflush(stdin);
-                                printf("Pacientes registrados na unidade 2:%d\n",unipac2);
+                                printf("\nPacientes registrados na unidade 1:%d\n",unipac1);
                                 fflush(stdin);
-                                printf("Pacientes registrados na unidade 3:%d\n",unipac3);
+                                printf("\nPacientes registrados na unidade 2:%d\n",unipac2);
                                 fflush(stdin);
-                                printf("Pacientes em total das unidades:%d\n",unipac1+unipac2+unipac3);
+                                printf("\nPacientes registrados na unidade 3:%d\n",unipac3);
+                                fflush(stdin);
+                                printf("\nPacientes em total das unidades:%d\n",unipac1+unipac2+unipac3);
 
-                                printf("\nPara mais detalhes busque o arquivo 'Cadastro de pacientes.txt'");
+                                printf("\nPara mais detalhes busque o arquivo 'Cadastro de pacientes.txt'\n");
 
                                 system("pause");
                                 system("cls");
                                 break;
 
                             case 2:
-                                printf("Médicos registrados na unidade 1:%d\n",unidademed1);
-                                printf("Médicos registrados na unidade 2:%d\n",unidademed2);
-                                printf("Médicos registrados na unidade 3:%d\n",unidademed3);
-                                printf("Total de médicos registrados nas unidades: %d",unidademed1+unidademed2+unidademed3);
+                                printf("\nMédicos registrados na unidade 1:%d\n",unidademed1);
+                                printf("\nMédicos registrados na unidade 2:%d\n",unidademed2);
+                                printf("\nMédicos registrados na unidade 3:%d\n",unidademed3);
+                                printf("\nTotal de médicos registrados nas unidades: %d",unidademed1+unidademed2+unidademed3);
 
-                                printf("\nPara mais detalhes busque o arquivo 'Cadastro de medicos.txt'");
+                                printf("\nPara mais detalhes busque o arquivo 'Cadastro de medicos.txt'\n");
 
                                 system("pause");
                                 system("cls");
                                 break;
 
                             case 3:
-                                printf("Funcionários registrados na unidade 1:%d\n",funcuni1);
-                                printf("Funcionários registrados na unidade 2:%d\n",funcuni2);
-                                printf("Funcionários registrados na unidade 3:%d\n",funcuni3);
-                                printf("Total de funcionários registrados:%d\n",funcuni1+funcuni2+funcuni3);
+                                printf("\nFuncionários registrados na unidade 1:%d\n",funcuni1);
+                                printf("\nFuncionários registrados na unidade 2:%d\n",funcuni2);
+                                printf("\nFuncionários registrados na unidade 3:%d\n",funcuni3);
+                                printf("\nTotal de funcionários registrados:%d\n",funcuni1+funcuni2+funcuni3);
 
-                                printf("\nPara mais detalhes busque o arquivo 'Cadastro de funcionarios.txt'");
+                                printf("\nPara mais detalhes busque o arquivo 'Cadastro de funcionarios.txt'\n");
 
                                 system("pause");
                                 system("cls");
@@ -480,13 +481,16 @@ void main(){
                                 if (unipac3>maiorPac)
                                     maiorPac=unipac3;
 
-                                if (maiorPac=unipac1){
+                                if (maiorPac=unipac1)
+                                {
                                 printf("\nUnidade que mais atende pacientes é a unidade 1\n");
                                 }
-                                if (maiorPac=unipac2){
+                                else if (maiorPac=unipac2)
+                                {
                                 printf("\nUnidade que mais atende pacientes é a unidade 2\n");
                                 }
-                                if (maiorPac=unipac3){
+                                else if (maiorPac=unipac3)
+                                {
                                 printf("\nUnidade que mais atende pacientes é a unidade 3\n");
                                 }
                                     maiorFunc=funcuni1;
@@ -494,13 +498,16 @@ void main(){
                                         maiorFunc=funcuni2;
                                     if (funcuni3>maiorFunc)
                                         maiorFunc=funcuni3;
-                                if (maiorFunc=funcuni1){
+                                if (maiorFunc=funcuni1)
+                                {
                                 printf("\nUnidade com o maior número de funcionários é a unidade 1\n");
                                 }
-                                if (maiorFunc=funcuni2){
+                                else if (maiorFunc=funcuni2)
+                                {
                                 printf("\nUnidade com o maior número de funcionários é a unidade 2\n");
                                 }
-                                if (maiorFunc=funcuni3){
+                                else if (maiorFunc=funcuni3)
+                                {
                                 printf("\nUnidade com o maior número de funcionários é a unidade 3\n");
                                 }
                                 maiorMed=unidademed1;
@@ -510,13 +517,16 @@ void main(){
                                 if (unidademed3>maiorMed)
                                 maiorMed=unidademed3;
 
-                                if (maiorMed=unidademed1){
+                                if (maiorMed=unidademed1)
+                                {
                                 printf("\nA unidade com o maior número de médicos é a unidade 1\n");
                                 }
-                                if (maiorMed=unidademed2){
+                                else if (maiorMed=unidademed2)
+                                {
                                 printf("\nA unidade com o maior número de médicos é a unidade 2\n");
                                 }
-                                if (maiorMed=unidademed3){
+                                else if (maiorMed=unidademed3)
+                                {
                                 printf("\nA unidade com o maior número de médicos é a unidade 3\n");
                                 }
 
@@ -524,10 +534,11 @@ void main(){
                                 system("cls");
                                 break;
 
-                            case 5: printf("Valor faturado pela unidade 1: %d\n",valor1*20);
-                                    printf("Valor faturado pela unidade 2: %d\n",valor2*20);
-                                    printf("Valor faturado pela unidade 3: %d\n",valor3*20);
-                                    printf("Valor total de todas unidades: %d\n",valor1*20,valor2*20,valor3*20);
+                            case 5: 
+                                printf("\nValor faturado pela unidade 1 no dia: %d\n",valor1*100);
+                                printf("\nValor faturado pela unidade 2 no dia: %d\n",valor2*100);
+                                printf("\nValor faturado pela unidade 3 no dia: %d\n",valor3*100);
+                                printf("\nValor total de todas unidades no dia: %d\n",valor1*100,valor2*100,valor3*100);
 
                             case 0:
                                 system("pause");
