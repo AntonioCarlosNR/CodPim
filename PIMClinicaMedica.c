@@ -45,7 +45,7 @@ void exibeMenu(){
 		printf("[4] Cadastrar funcionários \n");
 		printf("[5] Feedback dos pacientes \n");
 		printf("[6] Relatório\n");
-		printf("[0] Sair \n");
+		printf("[0] Logout \n");
 }
 
 void exibeRelatorio(){
@@ -54,8 +54,8 @@ printf("\nRelatorios\n");
 		printf("[2] Médicos por unidade \n");
 		printf("[3] Funcionários por unidade\n");
 		printf("[4] Unidade da rede que mais atende\n");
-		printf("[5] Valor total adquirido diariamente\n");
-		printf("[0] Sair\n");
+		printf("[5] Financeiro diaio\n");
+		printf("[0] Logout\n");
 }
 
 void main(){
@@ -434,15 +434,11 @@ void main(){
                         switch(opcao){
 
                             case 1:
-                                fflush(stdin);
-                                printf("\nPacientes registrados na unidade 1:%d\n",unipac1);
-                                fflush(stdin);
-                                printf("\nPacientes registrados na unidade 2:%d\n",unipac2);
-                                fflush(stdin);
-                                printf("\nPacientes registrados na unidade 3:%d\n",unipac3);
-                                fflush(stdin);
+                               
+                                printf("\nPacientes registrados na unidade 1:%d\n",unipac1);                              
+                                printf("\nPacientes registrados na unidade 2:%d\n",unipac2);                               
+                                printf("\nPacientes registrados na unidade 3:%d\n",unipac3);                               
                                 printf("\nPacientes em total das unidades:%d\n",unipac1+unipac2+unipac3);
-
                                 printf("\nPara mais detalhes busque o arquivo 'Cadastro de pacientes.txt'\n");
 
                                 system("pause");
