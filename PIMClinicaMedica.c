@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <locale.h>
 #include <string.h>
 
 typedef struct{
@@ -29,7 +28,7 @@ int login (int *log)
         {
             printf("Senha invalida!!\n");
         }
-    }
+    } 
     else
     {
     	printf("Usuario invalido!!\n");
@@ -41,31 +40,30 @@ void exibeMenu(){
     printf("*** Menu ***\n");
 		printf("[1] Cadastrar paciente \n");
 		printf("[2] Agendamento de Consultas \n");
-		printf("[3] Cadastrar médicos \n");
-		printf("[4] Cadastrar funcionários \n");
-		printf("[5] Feedback dos pacientes \n");
-		printf("[6] Relatório\n");
+		printf("[3] Cadastrar medicos \n");
+		printf("[4] Cadastrar funcionarios \n");
+		printf("[5] Feedback dos clientes \n");
+		printf("[6] Relatorio\n");
 		printf("[0] Logout \n");
 }
 
 void exibeRelatorio(){
 printf("\nRelatorios\n");
 		printf("[1] Pacientes por unidade \n");
-		printf("[2] Médicos por unidade \n");
-		printf("[3] Funcionários por unidade\n");
+		printf("[2] Medicos por unidade \n");
+		printf("[3] Funcionarios por unidade\n");
 		printf("[4] Unidade da rede que mais atende\n");
-		printf("[5] Financeiro diaio\n");
+		printf("[5] Financeiro diario\n");
 		printf("[0] Logout\n");
 }
 
 void main(){
-    setlocale(LC_ALL, "");
 
     int i, cont= 0, result=0, expc = 0, opcao, codigo, tam=0,achou=0,cadastro_feito=0,unidade[3],pos,neg,tama,unidademed1=0,unidademed2=0,unidademed3=0,medUni,funcuni1=0,funcuni2=0,funcuni3=0,UniFunc,UniPac,achou2=0,unipac1=0,unipac2=0,unipac3=0,total,total2,total3,maiorPac,maiorFunc,maiorMed,valor1=0,valor2=0,valor3=0;
     paciente cadastro[tam];
     char nome[30], cpf[10], nome_med[30],cpf_med[10],cpf_func[10],nome_func[30],func[20],dia[20],mes[20];
 
-    printf("\nBem vindo ao aplicativo de Gestão de clinicas médicas!!!\n");
+    printf("\nBem vindo ao aplicativo de Gestao de clinicas medicas!!!\n");
     login(&result);
 
     if(result != 1)
@@ -74,13 +72,13 @@ void main(){
             login(result);
             cont ++;
         }while(cont < 3);
-        printf("O sistema será encerrado\n\nTente novamente mais tarde.\n");
+        printf("O sistema sera encerrado\n\nTente novamente mais tarde.\n");
     }
     else
     {
             do{
             exibeMenu();
-            printf("Escolha a opção: ");
+            printf("Escolha a opcao: ");
             scanf("%d", &opcao);
 
             switch (opcao){
@@ -144,7 +142,7 @@ void main(){
                                     break;
 
                                 default: 
-                                    printf("\nEssa opção não existe. Escolha uma opção válida! \n");    
+                                    printf("\nEssa opcao nao existe. Escolha uma opcao valida! \n");    
                             }
                             //usando fprintf para armazenar a string no arquivo
                             fprintf(pont_arq, "\n");
@@ -219,7 +217,7 @@ void main(){
 
                 case 3: 
                     fflush(stdin);
-                    printf("Cadastro de médicos: \n");
+                    printf("Cadastro de medicos: \n");
 
                     //gerando arquivo em txt
                     FILE *pont_arqM;
@@ -235,22 +233,22 @@ void main(){
                     }
                     else
                     {
-                        printf("\nInforme o CPF do médico: ");
+                        printf("\nInforme o CPF do medico: ");
                         setbuf(stdin,0);
                         fgets(cpf_med, 10,stdin);
                         system("pause");
 
-                        printf("Informe o nome do médico: ");
+                        printf("Informe o nome do medico: ");
                         setbuf(stdin,0);
                         fgets(nome_med, 30,stdin);
                         system("pause");
 
-                        printf("\nInforme a especialidade do médico: ");
+                        printf("\nInforme a especialidade do medico: ");
                         setbuf(stdin,0);
                         fgets(func, 20,stdin);
                         system("pause");
 
-                        printf("\nInforme a unidade do médico 1,2 ou 3: ");
+                        printf("\nInforme a unidade do medico 1,2 ou 3: ");
                         scanf("%d",&medUni);
 
                         switch (medUni){
@@ -265,7 +263,7 @@ void main(){
                             break;
 
                             default: 
-                                printf("\nEssa opção não existe. Escolha uma opção válida! \n");
+                                printf("\nEssa opcao nao existe. Escolha uma opcao valida! \n");
                         }
                             //usando fprintf para armazenar a string no arquivo
                             fprintf(pont_arqM, "\n");
@@ -288,7 +286,7 @@ void main(){
 
                 case 4: 
 
-                    printf("Cadastro de funcionários: \n");
+                    printf("Cadastro de funcionarios: \n");
                     //gerando arquivo em txt
                     FILE *pont_arqF;
 
@@ -303,17 +301,17 @@ void main(){
                     }
                     else
                     {
-                        printf("\nInforme o CPF do funcionário: ");
+                        printf("\nInforme o CPF do funcionario: ");
                         setbuf(stdin,0);
                         fgets(cpf_func, 10,stdin);
                         system("pause");
 
-                        printf("Informe o nome do funcionário: ");
+                        printf("Informe o nome do funcionario: ");
                         setbuf(stdin,0);
                         fgets(nome_func, 30,stdin);
                         system("pause");
 
-                        printf("Informe a unidade do funcionário 1,2 ou 3: ");
+                        printf("Informe a unidade do funcionario 1,2 ou 3: ");
                         scanf("%d",&UniFunc);
                         switch (UniFunc){
                             case 1: 
@@ -333,7 +331,7 @@ void main(){
                                 break;
 
                             default: 
-                            printf("\nEssa opção não existe. Escolha uma opção válida! \n");
+                            printf("\nEssa opcao nao existe. Escolha uma opcao valida! \n");
                         }
                         //usando fprintf para armazenar a string no arquivo
                         fprintf(pont_arqF, "\n");
@@ -380,7 +378,7 @@ void main(){
                         system("pause");
 
                         printf("\nVoce teve uma boa experiencia com a unidade?: \n");
-                        printf("1-sim ou 2-não: ");
+                        printf("1-sim ou 2-nao: ");
                             scanf("%d",&expc);
 
                             if (expc == 1)
@@ -414,8 +412,8 @@ void main(){
                             }
                             else
                             {
-                                printf("Por favor entre somente com s para sim ou n para não\n");
-                                printf("\nFeedback NÃO realizado!\n");
+                                printf("Por favor entre somente com s para sim ou n para nao\n");
+                                printf("\nFeedback NAO realizado!\n");
                             }
                         //fechando arquivo
                         fclose(pont_arqFe);       
@@ -428,7 +426,7 @@ void main(){
                 case 6:
                     do{
                         exibeRelatorio();
-                        printf("Escolha a opção: ");
+                        printf("Escolha a opcao: ");
                         scanf("%d",&opcao);
                         
                         switch(opcao){
@@ -446,10 +444,10 @@ void main(){
                                 break;
 
                             case 2:
-                                printf("\nMédicos registrados na unidade 1:%d\n",unidademed1);
-                                printf("\nMédicos registrados na unidade 2:%d\n",unidademed2);
-                                printf("\nMédicos registrados na unidade 3:%d\n",unidademed3);
-                                printf("\nTotal de médicos registrados nas unidades: %d",unidademed1+unidademed2+unidademed3);
+                                printf("\nMedicos registrados na unidade 1:%d\n",unidademed1);
+                                printf("\nMedicos registrados na unidade 2:%d\n",unidademed2);
+                                printf("\nMedicos registrados na unidade 3:%d\n",unidademed3);
+                                printf("\nTotal de medicos registrados nas unidades: %d",unidademed1+unidademed2+unidademed3);
 
                                 printf("\nPara mais detalhes busque o arquivo 'Cadastro de medicos.txt'\n");
 
@@ -458,10 +456,10 @@ void main(){
                                 break;
 
                             case 3:
-                                printf("\nFuncionários registrados na unidade 1:%d\n",funcuni1);
-                                printf("\nFuncionários registrados na unidade 2:%d\n",funcuni2);
-                                printf("\nFuncionários registrados na unidade 3:%d\n",funcuni3);
-                                printf("\nTotal de funcionários registrados:%d\n",funcuni1+funcuni2+funcuni3);
+                                printf("\nFuncionarios registrados na unidade 1:%d\n",funcuni1);
+                                printf("\nFuncionarios registrados na unidade 2:%d\n",funcuni2);
+                                printf("\nFuncionarios registrados na unidade 3:%d\n",funcuni3);
+                                printf("\nTotal de funcionarios registrados:%d\n",funcuni1+funcuni2+funcuni3);
 
                                 printf("\nPara mais detalhes busque o arquivo 'Cadastro de funcionarios.txt'\n");
 
@@ -479,15 +477,15 @@ void main(){
 
                                 if (maiorPac=unipac1)
                                 {
-                                printf("\nUnidade que mais atende pacientes é a unidade 1\n");
+                                printf("\nUnidade que mais atende pacientes eh a unidade 1\n");
                                 }
                                 else if (maiorPac=unipac2)
                                 {
-                                printf("\nUnidade que mais atende pacientes é a unidade 2\n");
+                                printf("\nUnidade que mais atende pacientes eh a unidade 2\n");
                                 }
                                 else if (maiorPac=unipac3)
                                 {
-                                printf("\nUnidade que mais atende pacientes é a unidade 3\n");
+                                printf("\nUnidade que mais atende pacientes eh a unidade 3\n");
                                 }
                                     maiorFunc=funcuni1;
                                     if  (funcuni2>maiorFunc)
@@ -496,15 +494,15 @@ void main(){
                                         maiorFunc=funcuni3;
                                 if (maiorFunc=funcuni1)
                                 {
-                                printf("\nUnidade com o maior número de funcionários é a unidade 1\n");
+                                printf("\nUnidade com o maior numero de funcionarios eh a unidade 1\n");
                                 }
                                 else if (maiorFunc=funcuni2)
                                 {
-                                printf("\nUnidade com o maior número de funcionários é a unidade 2\n");
+                                printf("\nUnidade com o maior numero de funcionarios eh a unidade 2\n");
                                 }
                                 else if (maiorFunc=funcuni3)
                                 {
-                                printf("\nUnidade com o maior número de funcionários é a unidade 3\n");
+                                printf("\nUnidade com o maior numero de funcionarios eh a unidade 3\n");
                                 }
                                 maiorMed=unidademed1;
                                 if (unidademed2>maiorMed)
@@ -515,15 +513,15 @@ void main(){
 
                                 if (maiorMed=unidademed1)
                                 {
-                                printf("\nA unidade com o maior número de médicos é a unidade 1\n");
+                                printf("\nA unidade com o maior numero de medicos eh a unidade 1\n");
                                 }
                                 else if (maiorMed=unidademed2)
                                 {
-                                printf("\nA unidade com o maior número de médicos é a unidade 2\n");
+                                printf("\nA unidade com o maior numero de medicos eh a unidade 2\n");
                                 }
                                 else if (maiorMed=unidademed3)
                                 {
-                                printf("\nA unidade com o maior número de médicos é a unidade 3\n");
+                                printf("\nA unidade com o maior numero de medicos eh a unidade 3\n");
                                 }
 
                                 system("pause");
@@ -546,7 +544,7 @@ void main(){
                 case 0: printf("\nPrograma finalizado! \n");
                         break;
 
-                default: printf("\nEssa opção não existe. Escolha uma opção á! \n");
+                default: printf("\nEssa opcao nao existe. Escolha uma opcao valida! \n");
             }
         }while (opcao != 0);
     }
