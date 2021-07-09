@@ -542,6 +542,7 @@ void main(){
                 }while (opcao !=0);
                 
                 case 0: printf("\nPrograma finalizado! \n");
+                        printf("\nTchau!!");
                         break;
 
                 default: printf("\nEssa opcao nao existe. Escolha uma opcao valida! \n");
